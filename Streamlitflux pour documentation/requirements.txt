@@ -1,0 +1,9 @@
+streamlit
+pandas
+statsmodels
+plotly
+requests
+joblib
+aiohttp
+holidays
+skopt

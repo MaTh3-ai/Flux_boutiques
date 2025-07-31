@@ -1,0 +1,32 @@
+Structure du tableau
+Date : La date et l'heure de l'enregistrement des données.
+Année : L'année des données enregistrées.
+Semaine : La semaine de l'année pour laquelle les données sont enregistrées.
+Température maximale : La température maximale moyenne pour la semaine donnée.
+Température minimale : La température minimale moyenne pour la semaine donnée.
+Précipitations : La quantité de précipitations pour la semaine donnée.
+Période de vacances : Indique si la semaine est une période de vacances (1 pour oui, 0 pour non).
+Jour férié : Indique si la semaine contient un jour férié (1 pour oui, 0 pour non).
+Jours dans la semaine : Le nombre de jours dans la semaine pour lesquels les données sont disponibles.
+Exemple de données
+Pour une date donnée, par exemple, le 2016-01-01 :
+
+Année : 2016
+Semaine : 1
+Température maximale : 13,4
+Température minimale : 6,8
+Précipitations : 10,37
+Période de vacances : 0
+Jour férié : 1
+Jours dans la semaine : 3
+Pour une autre date donnée, par exemple, le 2016-01-04 :
+
+Année : 2016
+Semaine : 2
+Température maximale : 13,39
+Température minimale : 8,96
+Précipitations : 13,16
+Période de vacances : 0
+Jour férié : 0
+Jours dans la semaine : 7
+Ces valeurs représentent des mesures météorologiques et des indicateurs calendaires pour chaque semaine donnée.
