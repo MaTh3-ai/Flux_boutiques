@@ -1,7 +1,7 @@
 import pandas as pd
 from datetime import datetime, timedelta
 from app.utils.weather_fetcher import WeatherDataFetcher
-from config import HISTORICAL_EXOG, LAT, LON, HISTORICAL_FILE
+from config import HISTORICAL_EXOG, LAT, LON, HISTORICAL_FILE, RAW_HISTORICAL_FILE
 from app.utils.exogenous import exo_var
 
 
@@ -79,8 +79,8 @@ def process(input_path, output_path):
 
 def update_all_historicals():
     # 1. Mise à jour de la donnée principale (boutiques/cartes)
-    process('C:/Users/NFGS3174/Downloads/streamlit_Flux/Flux_brut.xlsx', 'C:/Users/NFGS3174/Downloads/streamlit_Flux/Flux_final.xlsx')
-    
+    process(RAW_HISTORICAL_FILE, HISTORICAL_FILE)
+
     # 2. Mise à jour des données météo brutes
     print("🔄 Mise à jour du fichier météo…")
     histo_path = HISTORICAL_EXOG
