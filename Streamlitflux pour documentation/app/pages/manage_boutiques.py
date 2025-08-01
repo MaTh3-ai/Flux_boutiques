@@ -4,7 +4,6 @@ import os
 import shutil
 from config import get_model_paths
 from app.database.database_manager import DatabaseManager  # adapte le chemin si besoin
-import os
 db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'database', 'boutiques.db')
 
 db = DatabaseManager(db_path)
