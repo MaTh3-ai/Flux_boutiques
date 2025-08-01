@@ -14,6 +14,8 @@ EXOG_FEATURES = [
 # Données historiques
 HISTORICAL_FILE = os.path.join(BASE_DIR, "Flux_final.xlsx")
 HISTORICAL_EXOG = os.path.join(BASE_DIR, "Météo_SUD.xlsx")
+RAW_HISTORICAL_FILE = os.path.join(BASE_DIR, "Flux_brut.xlsx")
+
 # API météo et proxy
 API_METEO_URL = "https://archive-api.open-meteo.com/v1/archive"
 USE_PROXY = True
