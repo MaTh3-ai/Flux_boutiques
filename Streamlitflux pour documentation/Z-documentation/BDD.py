@@ -1,3 +1,4 @@
+"""
 import sqlite3
 import os
 
@@ -78,4 +79,4 @@ def init_database():
 if __name__ == "__main__":
     init_database()
     print("Base de données initialisée avec succès!")
-
+"""
