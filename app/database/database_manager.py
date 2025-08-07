@@ -1,5 +1,6 @@
 import sqlite3
 from typing import List, Tuple
+import os
 
 class DatabaseManager:
     def __init__(self, db_path: str = "app/database/boutiques.db"):
@@ -12,6 +13,12 @@ class DatabaseManager:
         with self.get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM secteurs")
+            return cursor.fetchall()
+
+    def get_all_boutiques(self) -> List[Tuple]:
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM boutiques")
             return cursor.fetchall()
 
     def get_boutiques_by_secteur(self, secteur_id: int) -> List[Tuple]:
@@ -42,3 +49,14 @@ class DatabaseManager:
                 raise Exception("Impossible de supprimer ce secteur : des boutiques y sont encore rattachées.")
             cur.execute("DELETE FROM secteurs WHERE id_secteur = ?", (secteur_id,))
             conn.commit()
+def get_all_boutiques(db_path: str | None = None) -> list[str]:
+    """Retourne la liste des boutiques connues dans la base SQLite."""
+    if db_path is None:
+        db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                               '..', 'database', 'boutiques.db')
+    conn = sqlite3.connect(db_path)
+    try:
+        rows = conn.execute("SELECT nom_boutique FROM boutiques").fetchall()
+    finally:
+        conn.close()
+    return [r[0] for r in rows]
