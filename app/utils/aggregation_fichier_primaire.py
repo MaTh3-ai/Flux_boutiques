@@ -50,24 +50,11 @@ def process(input_path, output_path):
     df['Annee'] = df['Date'].dt.year
     df['Semaine'] = df['Date'].apply(custom_week)
 
-    # 4b. On ne garde QUE les semaines complètes
-    df['key'] = list(zip(df['Annee'], df['Semaine']))
-    jours_par_semaine = df.groupby('key')['Date'].nunique().to_dict()
-    def semaine_complete(key):
-        an, sem = key
-        n_jours = jours_par_semaine.get(key, 0)
-        # On tolère les semaines tronquées en début/fin d'année (>3 jours)
-        if sem in (1, df[df['Annee'] == an]['Semaine'].max()):
-            return n_jours >= 3
-        return n_jours == 7
-    semaines_valides = [key for key in jours_par_semaine if semaine_complete(key)]
-    df_valid = df[df['key'].isin(semaines_valides)].copy()
-
-    # 5. Somme par année/semaine (SEULEMENT sur semaines complètes)
-    shops = df.columns.difference(['Date', 'Annee', 'Semaine', 'key'])
-    cols_num = df_valid[shops].select_dtypes(include='number').columns
+    # 5. Somme par année/semaine (semaines partielles incluses)
+    shops = df.columns.difference(['Date', 'Annee', 'Semaine'])
+    cols_num = df[shops].select_dtypes(include='number').columns
     result = (
-        df_valid.groupby(['Annee', 'Semaine'])[cols_num]
+        df.groupby(['Annee', 'Semaine'])[cols_num]
         .sum()
         .reset_index()
     )
@@ -111,7 +98,7 @@ def update_all_historicals():
     print("🧩 Calcul des variables exogènes complètes…")
     exog_df = exo_var(date_min, date_max)
 
-    # 5. Nettoyage (on ne garde que les semaines complètes, et aucune ligne vide)
+    # 5. Nettoyage (suppression des lignes avec valeurs manquantes)
     cols_obligatoires = ['Date', 'Annee', 'Semaine',
                          'temperature_max', 'temperature_min', 'precipitation',
                          'is_vacation', 'is_public_holiday', 'days_in_week']
