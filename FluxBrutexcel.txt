@@ -1,0 +1,45 @@
+Ce tableau présente des données numériques associées à plusieurs villes pour des dates spécifiques. Voici une description simple de sa structure et de son contenu :
+
+Structure du tableau
+DATE : Cette colonne liste les dates pour lesquelles les données sont enregistrées. Par exemple :
+
+Vendredi 1 Janvier 2016
+Samedi 2 Janvier 2016
+Dimanche 3 Janvier 2016
+Colonnes de villes : Chaque colonne suivante représente une ville différente. Par exemple :
+
+Bègles Rives d'Arcins
+Bordeaux Intendance
+Bordeaux Sainte Catherine
+La Teste
+Langon
+Libourne
+Mérignac
+Angoulême Casino
+La Rochelle Beaulieu
+Limoges Clocher
+Poitiers Casino
+Royan
+Saintes
+Données du tableau
+Les lignes sous les dates contiennent des valeurs numériques qui représentent des mesures spécifiques pour chaque ville à une date donnée. Par exemple :
+Le 1er janvier 2016, toutes les valeurs sont à 0 pour toutes les villes.
+Le 2 janvier 2016, les valeurs varient, par exemple, 664 pour Bègles Rives d'Arcins, 351 pour Bordeaux Intendance, etc.
+Le 3 janvier 2016, toutes les valeurs sont à nouveau à 0 pour toutes les villes.
+Exemple de données
+Pour la date du Samedi 2 Janvier 2016 :
+
+Bègles Rives d'Arcins : 664
+Bordeaux Intendance : 351
+Bordeaux Sainte Catherine : 576
+La Teste : 822
+Langon : 185
+Libourne : 669
+Mérignac : 805
+Angoulême Casino : 4072
+La Rochelle Beaulieu : 605
+Limoges Clocher : 1014
+Poitiers Casino : 489
+Royan : 537
+Saintes : 506
+Ces valeurs numériques peuvent représenter des mesures spécifiques, comme des ventes, des visites, ou d'autres indicateurs de performance pour chaque ville à cette date.
