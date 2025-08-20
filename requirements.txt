@@ -7,3 +7,4 @@ joblib
 aiohttp
 holidays
 skopt
+Office365-REST-Python-Client
