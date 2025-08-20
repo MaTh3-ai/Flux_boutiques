@@ -5,13 +5,17 @@ import os
 from config import BASE_DIR
 from app.utils.data_loader import load_historical_data
 from app.utils.exogenous    import exo_var
+from app.utils.sharepoint   import download_joblib
+
+SP_MODELS_PREFIX = "/sites/ADSODataPerformance/Documents partages/FLux mathéo/streamlit_Flux/models"
+
 
 def load_model_and_scalers(cible):
-    folder = os.path.join(BASE_DIR, 'models', f"{cible}_models")
-    model = joblib.load(os.path.join(folder, f"sarimax_model_{cible}.pkl"))
-    scaler_exog = joblib.load(os.path.join(folder, f"scaler_exog_{cible}.pkl"))
-    scaler_target = joblib.load(os.path.join(folder, f"scaler_target_{cible}.pkl"))
-    pca = joblib.load(os.path.join(folder, f"pca_{cible}.pkl"))
+    folder = f"{SP_MODELS_PREFIX}/{cible}_models"
+    model = download_joblib(f"{folder}/sarimax_model_{cible}.pkl")
+    scaler_exog = download_joblib(f"{folder}/scaler_exog_{cible}.pkl")
+    scaler_target = download_joblib(f"{folder}/scaler_target_{cible}.pkl")
+    pca = download_joblib(f"{folder}/pca_{cible}.pkl")
     return model, scaler_exog, scaler_target, pca
 
 def in_sample_prediction(
